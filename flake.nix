@@ -20,9 +20,10 @@
       let
         pkgs = import nixpkgs { inherit system; };
         glide = pkgs.callPackage ./package.nix { };
-      in {
-        default = glide;
-        glide-browser = glide;
+      in rec {
+        glide-browser-unwrapped = glide;
+        glide-browser = pkgs.wrapFirefox glide-browser-unwrapped {};
+        default = glide-browser;
       }
     );
 

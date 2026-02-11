@@ -255,11 +255,15 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--url"
-      "https://github.com/glide-browser/glide"
-    ];
+  passthru = {
+    updateScript = nix-update-script {
+      extraArgs = [
+        "--url"
+        "https://github.com/glide-browser/glide"
+      ];
+    };
+    applicationName = "Glide Browser";
+    gtk3 = gtk3;
   };
 
   meta = {
