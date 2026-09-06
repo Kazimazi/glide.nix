@@ -54,7 +54,7 @@ in
 
     home.file =
       let
-        inherit (pkgs.stdenv) isDarwin;
+        inherit (pkgs.stdenv.hostPlatform) isDarwin;
         nativeMessagingHostPath =
           # note: this is intentionally different from the profile directory above.
           # Glide patches `nsXREDirProvider.cpp` so that native manifests are looked
